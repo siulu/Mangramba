@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#1d3b1f">
+  <meta name="description" content="Mangramba dena' — game arcade menjaga sawah dari burung pipit, bernuansa budaya Toraja.">
+  <title>Mangramba dena' — Jaga Sawah dari Pipit</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <style>
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: #14110d;
+      overflow: hidden;
+      overscroll-behavior: none;
+    }
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+    #wrap {
+      position: relative;
+      width: min(100vw, 56.25vh);
+      height: min(177.78vw, 100vh);
+      box-shadow: 0 0 48px rgba(0, 0, 0, 0.65);
+    }
+    canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: #bfe3f2;
+      touch-action: none;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    #err {
+      position: fixed;
+      left: 8px;
+      right: 8px;
+      bottom: 8px;
+      color: #ffb4b4;
+      font: 12px/1.45 ui-monospace, monospace;
+      white-space: pre-wrap;
+      pointer-events: none;
+      text-shadow: 0 1px 2px #000;
+    }
+  </style>
+</head>
+<body>
+  <div id="wrap">
+    <canvas id="game" width="450" height="800"></canvas>
+  </div>
+  <div id="err"></div>
+
+  <script>
+    window.addEventListener('error', function (e) {
+      var el = document.getElementById('err');
+      if (el) el.textContent = 'ERROR: ' + (e.message || e.error) + '\n' + (e.filename || '') + ':' + (e.lineno || '');
+    });
+    window.addEventListener('unhandledrejection', function (e) {
+      var el = document.getElementById('err');
+      var msg = e.reason && e.reason.message ? e.reason.message : e.reason;
+      if (el) el.textContent = 'PROMISE ERROR: ' + msg;
+    });
+  </script>
+  <script src="game.js"></script>
+</body>
+</html>
