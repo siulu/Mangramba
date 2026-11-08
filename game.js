@@ -527,7 +527,7 @@
     const mult = 1 + Math.floor(game.combo / 5);  
     const gained = b.points * mult;  
     game.score += gained;  
-    addFloater('USIR! +' + gained, b.x, b.y - 20, b.kind === 'golden' ? '#ffd94d' : '#fff6d0', 20);  
+    addFloater('SUHHH! +' + gained, b.x, b.y - 20, b.kind === 'golden' ? '#ffd94d' : '#fff6d0', 20);  
     if (!silentScare) {  
       if (game.combo % 5 === 0) SFX.combo();  
       else SFX.score();  
